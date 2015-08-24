@@ -6,17 +6,17 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.js"></script>
   <link rel="stylesheet" href="style.css">
 </head>
-<body ng-controller="ContactController">
+<body ng-controller="ContactsController">
 
   <section >
     <h2>Contacts App</h2>
-    <form ng-submit="submit()">
+    <form ng-submit="addContact()">
       <label for="name">Name</label>
-      <input type="text" id="name" ng-model="name">
+      <input type="text" id="name" ng-model="person.name">
       <label for="email">Email</label>
-      <input type="email" id="email" ng-model="email">
+      <input type="email" id="email" ng-model="person.email">
       <label for="phone">Phone Number</label>
-      <input type="tel" id="phone" ng-model="phone">
+      <input type="tel" id="phone" ng-model="person.phone">
       <input type="submit" value="Add Contact" class="greenTile">
     </form>
 
@@ -29,16 +29,18 @@
         <th>Email</th>
         <th>Phone</th>
       </tr>
-      <tr ng-repeat="person in people | filter:search">
+      <tr ng-repeat="person in contactData | filter:search">
         <td>{{person.name}}</td>
         <td>{{person.email}}</td>
         <td>{{person.phone}}</td>
+        <td><button ng-click="removeContacts(person)">Remove</button></td>
       </tr>
     </table>
 
   </section>
 
   <script src="./app.js"></script>
+  <script src="./controllers.js"></script>
   <script src="./services.js"></script>
 </body>
 </html>
